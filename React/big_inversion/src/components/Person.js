@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 
-        const Person = (props) => {
+        const Person = props => {
             return (
                 <div>
                 <h1>{props.lastName}, {props.firstName}</h1>
