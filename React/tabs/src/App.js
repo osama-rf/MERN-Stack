@@ -6,7 +6,7 @@ import {useState} from "react";
 
 function App() {
     const [tab, setTab] = useState({
-        content: ["Whoa look at me! I'm a TAB", "WHAT!? I HAVE TWO TABS", "Three is too good to be true"],
+        content: ["Tab 1 content is showing here.", "Tab 2 content is showing here.", "Tab 3 content is showing here."],
         selectedTab: 0,
     })
   return (
