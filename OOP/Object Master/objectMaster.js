@@ -30,10 +30,5 @@ const pkmnIdsDivBy3 = pokémon.filter( p => p.id % 2 === 0 && p.id % 3 === 0);
 const pkmnFire = pokémon.filter(p => p.types === "fire")
 
 
-
-
-
-
-
 console.log(bListPkmn)
 console.log(pkmnIds)
