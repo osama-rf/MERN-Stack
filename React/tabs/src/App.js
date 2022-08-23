@@ -11,7 +11,6 @@ function App() {
     })
   return (
       <div className="App">
-          <h1>TABS</h1>
           <Tabs tab={tab} setTab={setTab} />
       </div>
   );
