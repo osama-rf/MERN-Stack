@@ -1,13 +1,27 @@
 import React, {useEffect, useState} from "react";
+import axios from 'axios';
 
+//         // 1 using fetch
+// const Pokemon = (props) => {
+//     const [pokemon, setPokemon] = useState([]);
+//
+//     const pokeApi =  () => {
+//         fetch('https://pokeapi.co/api/v2/pokemon/')
+//             .then(response => response.json())
+//             .then(response => setPokemon(response.results))
+//     };
+
+
+
+// 2 Using Axios
 const Pokemon = (props) => {
     const [pokemon, setPokemon] = useState([]);
 
-    const pokeApi =  () => {
-        fetch('https://pokeapi.co/api/v2/pokemon/')
-            .then(response => response.json())
-            .then(response => setPokemon(response.results))
+   const pokeApi = () => {
+        axios.get('https://pokeapi.co/api/v2/pokemon/')
+            .then(response => {setPokemon(response.data.results)})
     };
+
 
     return (
         <div>
