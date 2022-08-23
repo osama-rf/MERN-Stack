@@ -1,22 +1,12 @@
 import React from "react";
 
-const BoxDisplay = ({ boxes }) => {
-
-    console.log(boxes)
-
-    return (
-        <div className="d-flex flex-wrap text-light col-8 mx-auto">
-
-            { boxes.map((box, i) =>
-                <div
-                    className="m-2 rounded"
-                    key={i}
-                    style={{ backgroundColor: box.color, height: box.height + "px", width: box.height + "px" }}
-                ></div>
+const BoxDisplay = (props) => {
+    return(
+        <div style={{display:'flex'}}>
+            {props.colorList.map((item) =>
+                <div style={{width: 100, height:100, margin:20, background:item}}></div>
             )}
-
         </div>
     )
 }
-
 export default BoxDisplay;

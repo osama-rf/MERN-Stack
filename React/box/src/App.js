@@ -5,24 +5,16 @@ import BoxDisplay from "./components/BoxDisplay";
 import BoxForm from "./components/BoxForm";
 
 function App() {
-
-  const [color, setColor] = useState([]);
-    const changeColor = ( newColor ) => {
-        setColor([ ...color, newColor ]);
+    const [pastColor, setPastColor] = useState([])
+    const box = (newColor) => {
+        setPastColor([...pastColor,newColor])
     }
-
-    return (
-      <div className="body">
-        <div className="text-light">
-          <BoxForm onNewBox={ changeColor }/>
-              <BoxDisplay boxes={[
-                {
-                  color
-                },
-            ]}/>
+    return(
+        <div className="App">
+            <BoxForm onNewColor={box}/>
+            <BoxDisplay colorList={pastColor} className="box"/>
         </div>
-      </div>
-  );
+    )
 }
 
 export default App;
