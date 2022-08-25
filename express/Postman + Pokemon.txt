@@ -1,0 +1,5 @@
+https://pokeapi.co/api/v2/pokemon/25
+https://pokeapi.co/api/v2/pokemon/2
+https://pokeapi.co/api/v2/pokemon/5
+https://pokeapi.co/api/v2/pokemon/3
+https://pokeapi.co/api/v2/pokemon/10
