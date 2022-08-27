@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from 'axios'
 import {Link} from "react-router-dom";
+import DeleteButton from "./DeleteButton";
 
 const ProductList = (props) => {
     const {removeFromDom} = props;
@@ -21,9 +22,12 @@ const ProductList = (props) => {
                         {product.title}
                     </Link>
                     |
-                    <button onClick={(e) => {deleteProduct(product._id)}}>
-                        Delete
-                    </button>
+                    {/*<button onClick={(e) => {deleteProduct(product._id)}}>*/}
+                    {/*    Delete*/}
+                    {/*</button>*/}
+                    <DeleteButton productId={product._id} successCallback={
+                        () => removeFromDom(product._id)
+                    }/>
                 </p>
             })}
         </div>

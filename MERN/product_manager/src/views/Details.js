@@ -19,7 +19,7 @@ const Details = (props) => {
         axios.delete('http://localhost:8002/product/' + productId)
             .then(res => {
                 removeFromDom(productId);
-                navigate('/');
+                navigate(-1);
             })
             .catch(err => console.error(err))
     }
