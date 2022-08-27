@@ -1,0 +1,409 @@
+my_first_db> db.createCollection("students")
+my_first_db> db.students.insert({name:"osama", home_state:"riyadh", lucky_number: 41, birthday:{month:8, day:19, year:1998}})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("630a1c8e3b6f51c9229488a3") }
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 }
+  }
+]
+my_first_db> db.students.find($or:[{home_state:{$in:["riyadh"]}}]})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:20)
+
+> 1 | db.students.find($or:[{home_state:{$in:["riyadh"]}}]})
+    |                     ^
+  2 |
+
+my_first_db> db.students.find({$or:[{home_state:{$in:["riyadh"]}}]})
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 }
+  }
+]
+my_first_db> db.students.find({;ucky_number:{$gt:3}})
+Uncaught:
+SyntaxError: Unexpected token (1:18)
+
+> 1 | db.students.find({;ucky_number:{$gt:3}})
+    |                   ^
+  2 |
+
+my_first_db> db.students.find({lucky_number:{$gt:3}})
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 }
+  }
+]
+my_first_db> db.students.find({lucky_number:{$gt:41}})
+
+my_first_db> db.students.find({lucky_number:{$lte:41}})
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 }
+  }
+]
+my_first_db> db.students.find({lucky_number:{$lte:10}})
+
+my_first_db> db.students.find({lucky_number:{$gt:1, $lte:9}})
+
+my_first_db> db.students.update({name:"osama"},{$set:{interses:["coding","brunch","MongoDb"]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  }
+]
+my_first_db> db.students.insert({name:"faisal", home_state:"riyadh", lucky_number: 4, birthday:{month:10, day:9, year:1998}})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("630a1f4c3b6f51c9229488a4") }
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    lucky_number: 4,
+    birthday: { month: 10, day: 9, year: 1998 }
+  }
+]
+my_first_db> db.students.update({name:"faisal"},{$set:{interses:["coding","brunch"]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    lucky_number: 4,
+    birthday: { month: 10, day: 9, year: 1998 },
+    interses: [ 'coding', 'brunch' ]
+  }
+]
+my_first_db> db.students.update({name:"faisal"},{$set:{interses:["coding","brunch","impuestos"]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    lucky_number: 4,
+    birthday: { month: 10, day: 9, year: 1998 },
+    interses: [ 'coding', 'brunch', 'impuestos' ]
+  }
+]
+my_first_db> db.students.update({name:"faisal"},{$set:{interses:["coding","brunch"]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    lucky_number: 4,
+    birthday: { month: 10, day: 9, year: 1998 },
+    interses: [ 'coding', 'brunch' ]
+  }
+]
+my_first_db> db.students.remove({"home_state":lima})
+ReferenceError: lima is not defined
+my_first_db> db.students.remove({"home_state":"lima"})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 0 }
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    lucky_number: 4,
+    birthday: { month: 10, day: 9, year: 1998 },
+    interses: [ 'coding', 'brunch' ]
+  }
+]
+my_first_db> db.students.remove({"lucky_number:{$gt:5}},ture)
+Uncaught:
+SyntaxError: Unterminated string constant. (1:20)
+
+> 1 | db.students.remove({"lucky_number:{$gt:5}},ture)
+    |                     ^
+  2 |
+
+my_first_db> db.students.remove({lucky_number:{$gt:5}},ture)
+ReferenceError: ture is not defined
+my_first_db> db.students.insert({name:"osama",number_of_belts:"increment",sequance_value:0})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("630a22573b6f51c9229488a5") }
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    lucky_number: 4,
+    birthday: { month: 10, day: 9, year: 1998 },
+    interses: [ 'coding', 'brunch' ]
+  },
+  {
+    _id: ObjectId("630a22573b6f51c9229488a5"),
+    name: 'osama',
+    number_of_belts: 'increment',
+    sequance_value: 0
+  }
+]
+my_first_db> getNextSequenceValue(sequenceName){ var sequenceDocument = db.students.findAndModify({ query:{number_of_belts:sequenceName}, update:{$inc:{sequence_value:1}}, new:true }); return sequenceDocument.sequence_value; }
+Uncaught:
+SyntaxError: Missing semicolon. (1:34)
+
+> 1 | getNextSequenceValue(sequenceName){ var sequenceDocument = db.students.findAndModify({ query:{number_of_belts:sequenceName}, update:{$inc:{sequence_value:1}}, new:true }); return sequenceDocument.sequence_value; }
+    |                                   ^
+  2 |
+
+my_first_db> getNextSequenceValue(sequenceName){ var sequenceDocument = db.students.findAndModify({ query:{number_of_belts:sequenceName}, update:{$inc:{sequence_value:1}}, new:true }); return sequenceDocument.sequence_value}
+Uncaught:
+SyntaxError: Missing semicolon. (1:34)
+
+> 1 | getNextSequenceValue(sequenceName){ var sequenceDocument = db.students.findAndModify({ query:{number_of_belts:sequenceName}, update:{$inc:{sequence_value:1}}, new:true }); return sequenceDocument.sequence_value}
+    |                                   ^
+  2 |
+
+my_first_db> db,students.updateMany({},{$rename:{"number_of_belts":"belts"}})
+ReferenceError: students is not defined
+my_first_db> db.students.updateMany({},{$rename:{"number_of_belts":"belts"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    lucky_number: 41,
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    lucky_number: 4,
+    birthday: { month: 10, day: 9, year: 1998 },
+    interses: [ 'coding', 'brunch' ]
+  },
+  {
+    _id: ObjectId("630a22573b6f51c9229488a5"),
+    name: 'osama',
+    sequance_value: 0,
+    belts: 'increment'
+  }
+]
+my_first_db> db.students.updateMany({},{$unset:{"lucky_number":""}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    birthday: { month: 10, day: 9, year: 1998 },
+    interses: [ 'coding', 'brunch' ]
+  },
+  {
+    _id: ObjectId("630a22573b6f51c9229488a5"),
+    name: 'osama',
+    sequance_value: 0,
+    belts: 'increment'
+  }
+]
+my_first_db> db.students.insert({name:"osama",updated_on: new Date()})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("630a240a3b6f51c9229488a6") }
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    birthday: { month: 10, day: 9, year: 1998 },
+    interses: [ 'coding', 'brunch' ]
+  },
+  {
+    _id: ObjectId("630a22573b6f51c9229488a5"),
+    name: 'osama',
+    sequance_value: 0,
+    belts: 'increment'
+  },
+  {
+    _id: ObjectId("630a240a3b6f51c9229488a6"),
+    name: 'osama',
+    updated_on: ISODate("2022-08-27T14:02:50.731Z")
+  }
+]
+my_first_db> db.students.insert({name:"faisal",updated_on: new Date()})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("630a241e3b6f51c9229488a7") }
+}
+my_first_db> db.students.find()
+[
+  {
+    _id: ObjectId("630a1c8e3b6f51c9229488a3"),
+    name: 'osama',
+    home_state: 'riyadh',
+    birthday: { month: 8, day: 19, year: 1998 },
+    interses: [ 'coding', 'brunch', 'MongoDb' ]
+  },
+  {
+    _id: ObjectId("630a1f4c3b6f51c9229488a4"),
+    name: 'faisal',
+    home_state: 'riyadh',
+    birthday: { month: 10, day: 9, year: 1998 },
+    interses: [ 'coding', 'brunch' ]
+  },
+  {
+    _id: ObjectId("630a22573b6f51c9229488a5"),
+    name: 'osama',
+    sequance_value: 0,
+    belts: 'increment'
+  },
+  {
+    _id: ObjectId("630a240a3b6f51c9229488a6"),
+    name: 'osama',
+    updated_on: ISODate("2022-08-27T14:02:50.731Z")
+  },
+  {
+    _id: ObjectId("630a241e3b6f51c9229488a7"),
+    name: 'faisal',
+    updated_on: ISODate("2022-08-27T14:03:10.647Z")
+  }
+]
+my_first_db> 
