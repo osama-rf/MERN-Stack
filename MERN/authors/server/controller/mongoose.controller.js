@@ -18,10 +18,25 @@ module.exports.createAuthor = (req, res) => {
         .catch(err => res.status(400).json(err));
 };
 
-module.exports.updateOneAuthor = (req, res) => {
-    Author.findOneAndUpdate({_id: req.params._id}, req.body, {runValidators: true})
-        .then(updatedAuthor => res.json({author: updatedAuthor}))
-        .catch(err => res.status(400).json(err));
+module.exports.updateOneAuthor = async (req, res) => {
+    try {
+        const updatedAuthor = await Author.findOneAndUpdate({
+            _id: req.params._id
+        }, {
+            name: req.body.name,
+        }, {
+            runValidators: true,
+            new: true,
+        })
+
+        return res.json({
+            author: updatedAuthor,
+        })
+    } catch (e) {
+        console.error('Unexpected error occur while updating author', e);
+
+        res.status(400).json(e);
+    }
 };
 
 module.exports.deleteOneAuthor = (req, res) => {
