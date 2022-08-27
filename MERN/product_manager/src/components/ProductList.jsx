@@ -6,13 +6,13 @@ import DeleteButton from "./DeleteButton";
 const ProductList = (props) => {
     const {removeFromDom} = props;
 
-    const deleteProduct = (productId) => {
-        axios.delete('http://localhost:8002/product/' + productId)
-            .then(res => {
-                removeFromDom(productId)
-            })
-            .catch(err => console.error(err))
-    }
+    // const deleteProduct = (productId) => {
+    //     axios.delete('http://localhost:8002/product/' + productId)
+    //         .then(res => {
+    //             removeFromDom(productId)
+    //         })
+    //         .catch(err => console.error(err))
+    // }
 
     return(
         <div>

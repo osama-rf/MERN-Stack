@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Link, useParams, useNavigate} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 
 const Details = (props) => {
     const [product, setProduct] = useState([])
     const {_id} = useParams();
-    const navigate = useNavigate()
+    const history = useHistory()
 
     useEffect(() => {
         axios.get('http://localhost:8002/product/' + _id)
@@ -19,9 +19,9 @@ const Details = (props) => {
         axios.delete('http://localhost:8002/product/' + productId)
             .then(res => {
                 removeFromDom(productId);
-                navigate(-1);
             })
             .catch(err => console.error(err))
+        history.push("/product")
     }
 
     return (
@@ -29,7 +29,7 @@ const Details = (props) => {
             <p>Product: {product.title}</p>
             <p>Price: {product.price}</p>
             <p>Description: {product.description}</p>
-            <Link to={"/product/" + product._id + "/edit"}>Edit</Link>
+            <Link to={`/product/${product._id}/edit`}>Edit</Link>
             <button onClick={(e) => {deleteProduct(product._id)}}>
                 Delete
             </button>
