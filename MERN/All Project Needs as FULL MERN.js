@@ -7,6 +7,7 @@ npm install mongoose express
 npm install axios
 npm install react-router-dom@5
 npm install cors
+touch server.js
 npm add bootstrap react-bootstrap // optional
 
 // STEP 2: all necessary declarations in server.js
