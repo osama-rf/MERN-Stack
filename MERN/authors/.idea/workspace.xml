@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3da101fe-9c4b-47ec-b1c2-17fddbc7c62a" name="Changes" comment="1,2,3 + Refactor, Reuse, Recycle">
+      <change afterPath="$PROJECT_DIR$/../belt_exam_mern/server/config/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../belt_exam_mern/server/controllers/controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../belt_exam_mern/server/models/model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../belt_exam_mern/server/routes/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../belt_exam_mern/src/components/PirateDash.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../belt_exam_mern/src/components/PirateDetails.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../belt_exam_mern/src/components/PirateForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../belt_exam_mern/src/views/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controller/mongoose.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controller/mongoose.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Update.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Update.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +77,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1661927616524</updated>
-      <workItem from="1661927617666" duration="21606000" />
+      <workItem from="1661927617666" duration="23160000" />
+      <workItem from="1662039208145" duration="46000" />
     </task>
     <task id="LOCAL-00001" summary="1,2,3 + Refactor, Reuse, Recycle">
       <created>1661968411630</created>
@@ -80,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661968411630</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1,2,3 + Refactor, Reuse, Recycle">
+      <created>1661970703676</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661970703676</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
